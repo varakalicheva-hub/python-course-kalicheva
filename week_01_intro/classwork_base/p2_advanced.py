@@ -85,7 +85,7 @@ def coin_change(amount: int) -> dict:
 #   else:
 #       print("Не положительное")
 
-def check_positive():
+ def check_positive():
     # TODO: реализовать
     pass
 
