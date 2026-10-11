@@ -19,9 +19,11 @@
 #            секунды = s % 60.
 
 def seconds_to_hms(seconds: int) -> str:
+
     h=seconds//3600
     m=(seconds%3600)//60
     s=seconds%60
+
     return f'{h:02d}:{m:02d}:{s:02d}'
 
 
@@ -38,7 +40,9 @@ def seconds_to_hms(seconds: int) -> str:
 # Подсказка: n // 100, (n // 10) % 10, n % 10.
 
 def sum_digits(n: int) -> int:
+
     total = (n // 100)+ ((n // 10) % 10)+(n % 10)
+
     return total
 
 
@@ -60,6 +64,7 @@ def sum_digits(n: int) -> int:
 # последовательно для каждого номинала.
 
 def coin_change(amount: int) -> dict:
+    
     fifty = amount // 50
     amount = amount % 50
     ten = amount // 10
@@ -99,7 +104,6 @@ def check_positive():
         print(f"Положительное: {n}")
     else: 
         print("Не положительное")
-    pass
 
 
 # ============================================================

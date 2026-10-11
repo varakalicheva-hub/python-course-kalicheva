@@ -10,7 +10,11 @@
 # Выведите строку вида: Иван, 25 лет, Москва.
 
 def task_1_1():
-    print(name=input("Введите имя: "), age=input("Введите возраст: "), city=input("Введите город: "))
+    name = input("Введите имя: ")
+    age = input("Введите возраст: ")
+    city = input("Введите город: ")
+
+    print(f'{name}, {age} лет, {city}.')
 
 
 # ============================================================
@@ -20,8 +24,9 @@ def task_1_1():
 # разность и произведение.
 
 def task_1_2():
-    int_1=int(input("Введите целое число: "))
-    int_2=int(input("Введите целое число: "))
+    int_1 = int(input("Введите целое число: "))
+    int_2 = int(input("Введите целое число: "))
+
     print(int_1 + int_2)
     print(int_1 - int_2)
     print(int_1 * int_2)
@@ -33,7 +38,8 @@ def task_1_2():
 # Запросите строку и выведите её длину и первый символ.
 
 def task_1_3():
-    input_str=input("Введите строку: ")
+    input_str = input("Введите строку: ")
+
     print(len(input_str))
     print(input_str[0])
 
@@ -47,6 +53,7 @@ def task_1_3():
 
 def task_1_4():
     num = int(input("Введите число: "))
+    
     if num > 0:
         print(True)
     else:   
@@ -68,8 +75,9 @@ def task_1_4():
 import math
 
 def task_2_1(radius: float) -> tuple:
-    s=math.pi *radius**2
-    c=2*math.pi *radius
+    s = math.pi *radius**2
+    c = 2*math.pi *radius
+
     print(f"S = {s:.2f}, C = {c:.2f}")
 
 
@@ -87,6 +95,7 @@ def task_2_2(a, b):
     a = int(input("Введите число a: "))
     b = int(input("Введите число b: "))
     a, b = b, a
+
     print(f"a = {a}, b = {b}")
 
 
@@ -107,6 +116,7 @@ def task_2_2(a, b):
 def task_2_3(minutes: int) -> str:
      h = minutes // 60
      m = minutes % 60
+
      return f"{h:02d}:{m:02d}"
 
 # ============================================================

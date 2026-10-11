@@ -30,10 +30,15 @@
 #       print("Not a number")
 
 def safe_input(s: str) -> str:
-    """Вернуть 'OK: <n>' или 'Not a number'."""
-    # TODO: реализовать
-    raise NotImplementedError
 
+    s = input('Введите число: ')
+
+    if s.isdigit() or (s.startswith("-") and s[1:].isdigit()):
+        n = int(s)
+        print(f"OK: {n}")
+    else:
+        print("Not a number")
+  
 
 # ============================================================
 # Задача 3.2. Разбор строки
@@ -50,9 +55,12 @@ def safe_input(s: str) -> str:
 #   Используйте split(":") и int().
 
 def parse_name_age(s: str) -> str:
-    """Вернуть приветствие с возрастом +1."""
-    # TODO: реализовать
-    raise NotImplementedError
+
+    s = input("Введите строку вида 'имя:возраст'").split(":")
+    age = int(s[1])
+    name = s[0]
+
+    print(f"Hello, {name}! Next year you are {age}")
 
 
 # ============================================================
@@ -76,9 +84,16 @@ def parse_name_age(s: str) -> str:
 # Подсказка: f"value:>10.2f"
 
 def format_receipt(product: str, cost: float, amount: int) -> str:
-    """Вернуть строку чека."""
-    # TODO: реализовать
-    raise NotImplementedError
+
+    product = input('Введите название товара: ')
+    cost = float(input('Введите цену за единицу товара: '))
+    amount = int(input('Введите количество товара: '))
+    
+    print(f"Product: {product}")
+    print(f"Cost: {cost:>10.2f}")
+    print(f"Amount: {amount}")
+    print("-" * 43)
+    print(f"Overall: {cost * amount:>10.2f}")
 
 
 # ============================================================
@@ -99,11 +114,16 @@ def format_receipt(product: str, cost: float, amount: int) -> str:
 #   Decimal('19.99') * 3 * (1 + Decimal('0.13'))
 #   .quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)
 
-def exact_total(price: str, quantity: int, tax_percent: str) -> str:
-    """Вернуть итоговую стоимость строкой с 2 знаками."""
-    # TODO: реализовать
-    raise NotImplementedError
+from decimal import Decimal, ROUND_HALF_UP
 
+def exact_total(price: str, quantity: int, tax_percent: str) -> str:
+   
+   price = Decimal(input("Введите цену товара:"))
+   quantity = int(input("Введите количество товара:"))
+   tax_percent = Decimal(input("Введите налоговую ставку:"))
+   
+   total = price * quantity * (1 + tax_percent / 100)
+   print("Overall:", total.quantize(Decimal('0.01'), rounding=ROUND_HALF_UP))
 
 # ============================================================
 # Задача 4.2. Сравнение float и Decimal
@@ -116,10 +136,16 @@ def exact_total(price: str, quantity: int, tax_percent: str) -> str:
 #   float: 0.30000000000000004 -> False
 #   Decimal: 0.3 -> True
 
+from decimal import Decimal
+
 def compare_float_decimal() -> tuple:
-    """Вернуть (float_sum, float_eq, decimal_sum, decimal_eq)."""
-    # TODO: реализовать
-    raise NotImplementedError
+    f_format = 0.1 + 0.2
+    d_format = Decimal('0.1') + Decimal('0.2')
+
+    print(f"float: {f_format} -> {f_format == 0.3}")
+    print(f"Decimal: {d_format} -> {d_format == Decimal('0.3')}")
+
+    
 
 
 # ============================================================
@@ -135,11 +161,14 @@ def compare_float_decimal() -> tuple:
 #   In: 1/6
 #   Out: 1/2
 
-def sum_fractions(frac1: str, frac2: str) -> str:
-    """Вернуть несократимую сумму дробей строкой."""
-    # TODO: реализовать
-    raise NotImplementedError
+from fractions import Fraction
 
+def sum_fractions(frac1: str, frac2: str) -> str:
+    frac1 = Fraction(input('Введите первую дробь "числитель/знаменатель": '))
+    frac2 = Fraction(input('Введите вторую дробь "числитель/знаменатель": ')) 
+    
+    result = frac1+frac2
+    print(result)
 
 # ============================================================
 # Задача 4.4. Точное деление счёта
@@ -159,10 +188,14 @@ def sum_fractions(frac1: str, frac2: str) -> str:
 # Вопрос: как распределить «лишние» копейки, чтобы сумма долей
 #   точно совпала со счётом?
 
+from decimal import Decimal, ROUND_HALF_UP
+
 def split_bill(account: str, guests: int) -> dict:
-    """Вернуть {'share': Decimal, 'total': Decimal, 'over': Decimal}."""
-    # TODO: реализовать
-    raise NotImplementedError
+    total = Decimal(account)
+    share = Decimal (total / guests).quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)
+    overall = share * guests
+    diff = overall - total
+    print (f"Sum: {overall} (over {diff})")
 
 
 # ============================================================
