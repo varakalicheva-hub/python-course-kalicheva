@@ -31,13 +31,11 @@
 
 def safe_input(s: str) -> str:
 
-    s = input('Введите число: ')
-
     if s.isdigit() or (s.startswith("-") and s[1:].isdigit()):
         n = int(s)
-        print(f"OK: {n}")
+        return f"OK: {n}"
     else:
-        print("Not a number")
+        return "Not a number"
   
 
 # ============================================================
@@ -56,11 +54,9 @@ def safe_input(s: str) -> str:
 
 def parse_name_age(s: str) -> str:
 
-    s = input("Введите строку вида 'имя:возраст'").split(":")
-    age = int(s[1])
-    name = s[0]
+    name, age = s.split(":")
 
-    print(f"Hello, {name}! Next year you are {age}")
+    return f"Hello, {name}! Next year you are {int(age)+1}"
 
 
 # ============================================================
@@ -84,17 +80,12 @@ def parse_name_age(s: str) -> str:
 # Подсказка: f"value:>10.2f"
 
 def format_receipt(product: str, cost: float, amount: int) -> str:
-
-    product = input('Введите название товара: ')
-    cost = float(input('Введите цену за единицу товара: '))
-    amount = int(input('Введите количество товара: '))
     
-    print(f"Product: {product}")
-    print(f"Cost: {cost:>10.2f}")
-    print(f"Amount: {amount}")
-    print("-" * 43)
-    print(f"Overall: {cost * amount:>10.2f}")
-
+    return (f"Product: {product}\n"
+            f"Cost: {cost:>10.2f}\n"
+            f"Amount: {amount}\n"
+            f"{'-' * 20}\n"
+            f"Overall: {cost * amount:>10.2f}")
 
 # ============================================================
 # Задача 4.1. Точный расчёт стоимости (Decimal)
@@ -118,11 +109,7 @@ from decimal import Decimal, ROUND_HALF_UP
 
 def exact_total(price: str, quantity: int, tax_percent: str) -> str:
    
-   price = Decimal(input("Введите цену товара:"))
-   quantity = int(input("Введите количество товара:"))
-   tax_percent = Decimal(input("Введите налоговую ставку:"))
-   
-   total = price * quantity * (1 + tax_percent / 100)
+   total = Decimal(price) * quantity * (1 + Decimal(tax_percent) / 100)
    print("Overall:", total.quantize(Decimal('0.01'), rounding=ROUND_HALF_UP))
 
 # ============================================================
@@ -144,7 +131,6 @@ def compare_float_decimal() -> tuple:
 
     print(f"float: {f_format} -> {f_format == 0.3}")
     print(f"Decimal: {d_format} -> {d_format == Decimal('0.3')}")
-
     
 
 
@@ -164,11 +150,8 @@ def compare_float_decimal() -> tuple:
 from fractions import Fraction
 
 def sum_fractions(frac1: str, frac2: str) -> str:
-    frac1 = Fraction(input('Введите первую дробь "числитель/знаменатель": '))
-    frac2 = Fraction(input('Введите вторую дробь "числитель/знаменатель": ')) 
     
-    result = frac1+frac2
-    print(result)
+    return str(Fraction(frac1) + Fraction(frac2))
 
 # ============================================================
 # Задача 4.4. Точное деление счёта
@@ -191,11 +174,16 @@ def sum_fractions(frac1: str, frac2: str) -> str:
 from decimal import Decimal, ROUND_HALF_UP
 
 def split_bill(account: str, guests: int) -> dict:
+
     total = Decimal(account)
     share = Decimal (total / guests).quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)
     overall = share * guests
     diff = overall - total
-    print (f"Sum: {overall} (over {diff})")
+
+    print(f"Account: {total}")
+    print(f"Guests: {guests}")
+    print(f"Share: {share}")
+    print(f"Sum: {overall} (over {diff})")
 
 
 # ============================================================

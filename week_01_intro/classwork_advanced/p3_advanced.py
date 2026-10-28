@@ -26,11 +26,13 @@
 #   6) сравнить оба решения.
 
 def has_duplicates_slow(nums: list) -> bool:
+
     """Решение коллеги за O(n^2)."""
     for i in range(len(nums)):
         for j in range(i + 1, len(nums)):
             if nums[i] == nums[j]:
                 return True
+            
     return False
 
 
@@ -74,22 +76,22 @@ def has_duplicates_fast(nums: list) -> bool:
 #           pass
 
 def complexity_a() -> str:
-    # TODO
+    return "O(n)"
     raise NotImplementedError
 
 
 def complexity_b() -> str:
-    # TODO
+    return "O(n^2)"
     raise NotImplementedError
 
 
 def complexity_c() -> str:
-    # TODO
+    return "O(log n)"
     raise NotImplementedError
 
 
 def complexity_d() -> str:
-    # TODO
+    return "O(n^2)"
     raise NotImplementedError
 
 

@@ -31,9 +31,6 @@ def min_coins(amount: int) -> int:
             count += 1
     return count
 
-    # TODO: реализовать жадный размен
-    return count
-
 
 if __name__ == "__main__":
     print(min_coins(87))   # 7
